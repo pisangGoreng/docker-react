@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t endy/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run endy/docker-react npm run test -- --coverage
