@@ -1,0 +1,20 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY ./package.json ./
+RUN npm install
+COPY ./ ./
+
+CMD ["npm", "run", "start"]
+
+# docker build -f Dockerfile.dev .
+# docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app e7123e128d0a
+# docker run -p 3000:3000 -v $(pwd):/app e7123e128d0a
+
+# pwd => pre working directory
+# -v $(pwd):/app => buat refrensi semua file yg ada di pwd
+# ke folder ./app di dalam container
+
+# untuk langsung eksekusi perintah langsung di terminal
+# docker run -it 2519bc1fc562 npm run test
