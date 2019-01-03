@@ -8,6 +8,7 @@ COPY . .
 RUN npm run build
 
 FROM nginx
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 
 
@@ -18,3 +19,5 @@ COPY --from=builder /app/build /usr/share/nginx/html
 # --from=builder => copy file system dari step builder (node:alpine)
 # /app/build => path file yang akan di copy
 # /usr/share/nginx/html => path lokasi copy file di dalam container nignx
+
+# EXPOSE untuk mapping port ke elasticbeanstalk
